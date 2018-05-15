@@ -14,28 +14,34 @@
 <body>
 	<h1 class="blind">StarRating</h1>
 	<main>
-		<!-- [D] data-value 기준 활성화 이미지 너비 설정 -->
-		<div class="star-rating" data-value="0">
+
+		<div class="star-rating">
 			<h2 class="blind">rating</h2>
 			<!-- [D] range 값 변경시 값 변경 -->
 			<strong class="star-rating__value">0.0</strong>
 			<div class="star-rating__item">
 				<input class="star-rating__item--slider" type="range" name="rating" min="0" max="5" step="0.5" value="0">
-				<!-- [D] range 값에 비례하여 width % 값 설정 -->
+				<!-- 
+					[D] range 값에 비례하여 width 값 설정 
+						-. 별 너비 : 30px - 60px
+						-. 별 사이 간격 : 15px - 30px
+						-. range 값 10% = 15px
+				-->
 				<span class="star-rating__item--active"></span>
 			</div>
 		</div>
 
-		<div class="star-rating" data-value="3">
+		<div class="star-rating">
 			<h2 class="blind">rating</h2>
 			<!-- [D] range 값 변경시 값 변경 -->
-			<strong class="star-rating__value">3.0</strong>
+			<strong class="star-rating__value">0.0</strong>
 			<div class="star-rating__item">
-				<input class="star-rating__item--slider" type="range" name="rating" min="0" max="5" step="0.5" value="3">
-				<!-- [D] range 값에 비례하여 width % 값 설정 -->
+				<input class="star-rating__item--slider" type="range" name="rating" min="0" max="5" step="0.5" value="3.5">
+				<!-- [D] range 값에 비례하여 width 값 설정 -->
 				<span class="star-rating__item--active"></span>
 			</div>
 		</div>
+
 	</main>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -72,11 +78,26 @@
 						output = container.find(this.opts.value),
 						active = container.find(this.opts.active),
 						value = win.Number(target.val()),
-						valuePer = (value / win.parseInt(target.attr('max'), 10)) * 100;
+						valuePer = (value / win.parseInt(target.attr('max'), 10)) * 100,
+						startValue = win.Number(output.text()).toFixed(1),
+						margin = 0;
 
-						output.text(value.toFixed(1));
-						container.attr('data-value', valuePer);
-						active.width(valuePer + '%');
+						if (valuePer > 20) {
+							margin = valuePer - 20;
+							margin = win.Math.round(margin/20) * 15;
+						}
+
+						active.stop().animate({
+							width : ((valuePer * 15)/10) + margin
+						});
+
+						value = value.toFixed(1);
+
+						$({ value : startValue }).stop().animate({ value : value }, {
+							step: function(now) {
+								output.text(now.toFixed(1));
+							}
+						});
 					},
 					setDefaultDisplay : function() {
 						$.map(this.slider, $.proxy(function(slider) {
