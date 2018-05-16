@@ -2,6 +2,22 @@
     @see https://codepen.io/onediv/pen/GBJcl 
     @see http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 html, body {font-size:10px}
+body {font-family: 'Nanum Gothic', serif}
 
 .blind {overflow:hidden;position:absolute;width:1px;height:1px;clip:rect(1px, 1px, 1px, 1px)}
+
+.survery-info {margin:2rem}
+.survery-info .survery-info__title {text-align:center;margin-bottom:1rem}
+.survery-info .survery-info__title .info-title__main {position:relative;top:5rem;font-size:3.5rem;font-weight:bold}
+.survery-info .survery-info__title .info-title__sub {position:relative;top:-4.5rem;font-size:1.5rem}
+.survery-info .survery-info__title .info-title__description {font-size:2rem}
+.survery-info .survery-info__title .info-title--highlight {display:inline-block;color:#ff6600;border-bottom:1px solid #ff6600/*;text-decoration:underline;text-decoration-color:#ff6600*/}
+.survery-info .survery-info__content {background:#ededed;border-radius:1rem;padding:2rem;font-size:1.2rem;}
+.survery-info .survery-info__content .info-content__description {line-height:2rem;text-align:left}
+.survery-info .survery-info__content .survery-info__content-list {position:relative}
+.survery-info .survery-info__content .survery-info__content-list dt {display:inline-block;margin:0;width:8rem;text-align:center;padding:.5rem;border:1px solid #333;border-radius:.5rem}
+.survery-info .survery-info__content .survery-info__content-list dd {display:inline-block;width:calc(100% - 12rem);margin:0;line-height:2.2rem}
+.survery-info .survery-info__content .survery-info__join-button {position:relative;display:block;width:10rem;margin:0 auto;padding:1rem;text-align:center;font-size:1.5rem;line-height:1.5rem;text-decoration:none;color:#fff;background:#ff6600;border-radius:1rem}
