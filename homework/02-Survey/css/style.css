@@ -1,0 +1,7 @@
+/* 
+    @see https://codepen.io/onediv/pen/GBJcl 
+    @see http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
+*/
+html, body {font-size:10px}
+
+.blind {overflow:hidden;position:absolute;width:1px;height:1px;clip:rect(1px, 1px, 1px, 1px)}
