@@ -14,32 +14,46 @@
 <body>
 	<main class="survey-form">
         <form action="#" class="js-surveyForm">
-            <section>
-                <table>
-                    <caption>게임에 대한 성향 파악</caption>
+            <section class="survey-form__body">
+                <table class="survey-form__table" summary="게임에 대한 성향 파악 설문지">
+                    <caption>
+                        <h1 class="survey-form__table--title">&#9654; 게임에 대한 성향 파악</h1>
+                    </caption>
+                    <colgroup>
+                        <col class="col-small" />
+                        <col />
+                        <col class="col-small" />
+                        <col class="col-small" />
+                        <col class="col-small" />
+                        <col class="col-small" />
+                        <col class="col-small" />
+                    </colgroup>
                     <thead>
                         <tr>
-                            <th>번호</th>
-                            <th>문항</th>
-                            <th>전혀<br>아니다</th>
-                            <th>아니다</th>
-                            <th>보통이다</th>
-                            <th>그렇다</th>
-                            <th>매우<br>그렇다</th>
+                            <th scope="col">번호</th>
+                            <th scope="col">문항</th>
+                            <th scope="col">전혀<br>아니다</th>
+                            <th scope="col">아니다</th>
+                            <th scope="col">보통이다</th>
+                            <th scope="col">그렇다</th>
+                            <th scope="col">매우<br>그렇다</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th><p class="blind">문항</p>1</th>
+                            <th scope="row"><p class="blind">문항</p>1</th>
                             <td>문항1</td>
-                            <td><input type="radio" name="q1" value="1"></td>
+                            <td>
+                                <label class="blind" for="q1-1">전혀<br>아니다</label>
+                                <input type="radio" id="q1-1" name="q1" value="1">
+                            </td>
                             <td><input type="radio" name="q1" value="2"></td>
                             <td><input type="radio" name="q1" value="3"></td>
                             <td><input type="radio" name="q1" value="4"></td>
                             <td><input type="radio" name="q1" value="5"></td>
                         </tr>
                         <tr>
-                            <th><p class="blind">문항</p>2</th>
+                            <th scope="row"><p class="blind">문항</p>2</th>
                             <td>문항2</td>
                             <td><input type="radio" name="q2" value="1"></td>
                             <td><input type="radio" name="q2" value="2"></td>
@@ -50,9 +64,9 @@
                     </tbody>
                 </table>
             </section>
-            <section>
-                <label>개인정보 수집 및 이용 동의<input type="checkbox" name="agree" value="Y"></label>
-                <button type="submit">다음/완료</button>
+            <section class="survey-form__footer">
+                <label class="survey-form__footer--agree">개인정보 수집 및 이용 동의<input type="checkbox" name="agree" value="Y"></label><br>
+                <button type="submit" class="survey-form__footer--submit">다음/완료</button>
             </section>
         </form>
 	</main>
@@ -87,6 +101,7 @@
                     },
                     attachEvents : function() {
                         this.form.on('submit', $.proxy(this.onFormSubmitListener, this));
+                        this.agree.on('change', $.proxy(this.onAgreeChangeListener, this));
                     },
                     displayMessage : function(status) {
                         var message = this.opts.messages[status.toLowerCase()];
@@ -112,6 +127,19 @@
                         }
 
                         this.displayMessage(status);
+
+                        if (status === 'done') {
+                            win.alert('완료 팝업 노출 > 확인 > 이벤트 페이지 close');
+                            window.close();
+                        }
+                    },
+                    onAgreeChangeListener : function(e) {
+                        var target = $(e.currentTarget),
+                        isChecked = target.is(':checked');
+
+                        if (isChecked) {
+                            win.alert('check:true 시 약관동의 팝업 노출');
+                        }
                     }
                 };
             })();

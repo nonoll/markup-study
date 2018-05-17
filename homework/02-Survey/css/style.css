@@ -9,6 +9,7 @@ body {font-family: 'Nanum Gothic', serif}
 dt, dd {margin:0;padding:0}
 
 .blind {overflow:hidden;position:absolute;width:1px;height:1px;clip:rect(1px, 1px, 1px, 1px)}
+colgroup .col-small {width:80px}
 
 .survey-info {margin:2rem}
 .survey-info .survey-info__title {text-align:center;margin-bottom:1rem}
@@ -24,4 +25,14 @@ dt, dd {margin:0;padding:0}
 .survey-info .survey-info__content .info-content__long-description {position:absolute;margin:-.5rem 0}
 .survey-info .survey-info__content .survey-info__join-button {position:relative;display:block;width:10rem;margin:0 auto;padding:1rem;text-align:center;font-size:1.5rem;line-height:1.5rem;text-decoration:none;color:#fff;background:#ff6600;border-radius:1rem}
 
-.survey-form {}
+.survey-form {margin:2rem;font-size:1.2rem;line-height:1.5rem}
+.survey-form form {background:#ededed;border-radius:1rem;padding:2rem}
+.survey-form .survey-form__body .survey-form__table {width:100%;height:100%;border:1px solid #3d3d3d;border-collapse:collapse}
+.survey-form .survey-form__body .survey-form__table .survey-form__table--title {font-size:2rem;line-height:2.5rem;margin:0 0 1rem 0;text-align:left}
+.survey-form .survey-form__body .survey-form__table th,
+.survey-form .survey-form__body .survey-form__table td {border:1px solid #3d3d3d;padding:1rem}
+.survey-form .survey-form__body .survey-form__table thead th {font-size:1.4rem;line-height:2rem}
+.survey-form .survey-form__body .survey-form__table tbody td {text-align:center}
+.survey-form .survey-form__footer {margin-top:2rem;text-align:center}
+.survey-form .survey-form__footer .survey-form__footer--agree {line-height:13px;vertical-align:top;padding:1rem}
+.survey-form .survey-form__footer .survey-form__footer--submit {margin-top:1rem;padding:1rem;text-align:center;font-size:1.5rem;line-height:1.5rem;text-decoration:none;color:#fff;background:#ff6600;border:0;border-radius:1rem;-webkit-appearance:none;appearance:none}
