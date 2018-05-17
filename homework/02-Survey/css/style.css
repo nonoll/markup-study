@@ -6,18 +6,22 @@
 
 html, body {font-size:10px}
 body {font-family: 'Nanum Gothic', serif}
+dt, dd {margin:0;padding:0}
 
 .blind {overflow:hidden;position:absolute;width:1px;height:1px;clip:rect(1px, 1px, 1px, 1px)}
 
-.survery-info {margin:2rem}
-.survery-info .survery-info__title {text-align:center;margin-bottom:1rem}
-.survery-info .survery-info__title .info-title__main {position:relative;top:5rem;font-size:3.5rem;font-weight:bold}
-.survery-info .survery-info__title .info-title__sub {position:relative;top:-4.5rem;font-size:1.5rem}
-.survery-info .survery-info__title .info-title__description {font-size:2rem}
-.survery-info .survery-info__title .info-title--highlight {display:inline-block;color:#ff6600;border-bottom:1px solid #ff6600/*;text-decoration:underline;text-decoration-color:#ff6600*/}
-.survery-info .survery-info__content {background:#ededed;border-radius:1rem;padding:2rem;font-size:1.2rem;}
-.survery-info .survery-info__content .info-content__description {line-height:2rem;text-align:left}
-.survery-info .survery-info__content .survery-info__content-list {position:relative}
-.survery-info .survery-info__content .survery-info__content-list dt {display:inline-block;margin:0;width:8rem;text-align:center;padding:.5rem;border:1px solid #333;border-radius:.5rem}
-.survery-info .survery-info__content .survery-info__content-list dd {display:inline-block;width:calc(100% - 12rem);margin:0;line-height:2.2rem}
-.survery-info .survery-info__content .survery-info__join-button {position:relative;display:block;width:10rem;margin:0 auto;padding:1rem;text-align:center;font-size:1.5rem;line-height:1.5rem;text-decoration:none;color:#fff;background:#ff6600;border-radius:1rem}
+.survey-info {margin:2rem}
+.survey-info .survey-info__title {text-align:center;margin-bottom:1rem}
+.survey-info .survey-info__title .info-title__main {position:relative;top:5rem;font-size:3.5rem;font-weight:bold}
+.survey-info .survey-info__title .info-title__sub {position:relative;top:-4.5rem;font-size:1.5rem}
+.survey-info .survey-info__title .info-title__description {font-size:2rem}
+.survey-info .survey-info__title .info-title--highlight {display:inline-block;color:#ff6600;border-bottom:1px solid #ff6600/*;text-decoration:underline;text-decoration-color:#ff6600*/}
+.survey-info .survey-info__content {background:#ededed;border-radius:1rem;padding:2rem;font-size:1.2rem;}
+.survey-info .survey-info__content .info-content__description {line-height:2rem;text-align:left}
+.survey-info .survey-info__content .survey-info__content-list {position:relative;margin-bottom:5rem}
+.survey-info .survey-info__content .survey-info__content-list dt {display:inline-block;width:8rem;margin:0 0 1rem 1rem;text-align:center;padding:.5rem;border:1px solid #333;border-radius:.5rem}
+.survey-info .survey-info__content .survey-info__content-list dd {display:inline-block;width:calc(100% - 12rem);margin:0 0 1rem 1rem;line-height:2.2rem}
+.survey-info .survey-info__content .info-content__long-description {position:absolute;margin:-.5rem 0}
+.survey-info .survey-info__content .survey-info__join-button {position:relative;display:block;width:10rem;margin:0 auto;padding:1rem;text-align:center;font-size:1.5rem;line-height:1.5rem;text-decoration:none;color:#fff;background:#ff6600;border-radius:1rem}
+
+.survey-form {}

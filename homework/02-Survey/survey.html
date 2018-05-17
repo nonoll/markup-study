@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Survey Form</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<main class="survey-form">
+        <form action="#" class="js-surveyForm">
+            <section>
+                <table>
+                    <caption>게임에 대한 성향 파악</caption>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>문항</th>
+                            <th>전혀<br>아니다</th>
+                            <th>아니다</th>
+                            <th>보통이다</th>
+                            <th>그렇다</th>
+                            <th>매우<br>그렇다</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th><p class="blind">문항</p>1</th>
+                            <td>문항1</td>
+                            <td><input type="radio" name="q1" value="1"></td>
+                            <td><input type="radio" name="q1" value="2"></td>
+                            <td><input type="radio" name="q1" value="3"></td>
+                            <td><input type="radio" name="q1" value="4"></td>
+                            <td><input type="radio" name="q1" value="5"></td>
+                        </tr>
+                        <tr>
+                            <th><p class="blind">문항</p>2</th>
+                            <td>문항2</td>
+                            <td><input type="radio" name="q2" value="1"></td>
+                            <td><input type="radio" name="q2" value="2"></td>
+                            <td><input type="radio" name="q2" value="3"></td>
+                            <td><input type="radio" name="q2" value="4"></td>
+                            <td><input type="radio" name="q2" value="5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <label>개인정보 수집 및 이용 동의<input type="checkbox" name="agree" value="Y"></label>
+                <button type="submit">다음/완료</button>
+            </section>
+        </form>
+	</main>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="./js/browser-update.js"></script>
+    <script>
+        ;(function(win, $) {
+            'use strict';
+
+            var survey = (function() {
+                var defParams = {
+                    form : '.js-surveyForm',
+                    questions : 'tbody > tr',
+                    agree : '[name="agree"]',
+                    messages : {
+                        questions : '응답하지 않은 설문이 있습니다.',
+                        agree : '개인정보 수집이용에\n동의해주시기 바랍니다.',
+                        done : '쿠폰 지급이 완료되었습니다.\n감사합니다.'
+                    }
+                };
+                return {
+                    init : function(opts) {
+                        this.opts = $.extend(true, defParams, opts);
+
+                        this.setElements();
+                        this.attachEvents();
+                    },
+                    setElements : function() {
+                        this.form = $('body').find(this.opts.form);
+                        this.questions = this.form.find(this.opts.questions);
+                        this.agree = this.form.find(this.opts.agree);
+                    },
+                    attachEvents : function() {
+                        this.form.on('submit', $.proxy(this.onFormSubmitListener, this));
+                    },
+                    displayMessage : function(status) {
+                        var message = this.opts.messages[status.toLowerCase()];
+
+                        if (!message) {
+                            return;
+                        }
+
+                        win.alert(message);
+                    },
+                    onFormSubmitListener : function(e) {
+                        e.preventDefault();
+
+                        var formInfo = this.form.serializeArray(),
+                        status = '';
+
+                        if (formInfo.length < this.questions.length) {
+                            status = 'questions';
+                        } else if (!this.agree.is(':checked')) {
+                            status = 'agree';
+                        } else {
+                            status = 'done';
+                        }
+
+                        this.displayMessage(status);
+                    }
+                };
+            })();
+
+            $(function() {
+                survey.init();
+            });
+        })(window, window.jQuery);
+    </script>
+</body>
+</html>
